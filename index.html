@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smile Bright Dental Clinic</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Replace this line: -->
+    <script src="https://sdk.twilio.com/js/client/latest/twilio.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<!-- With this updated CDN link: -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="text-primary">Smile</span> Bright Dental
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link active mr-5" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mr-5 " href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#doctors">Our Doctors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#patients">Patient Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#technology">Technology</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <!-- ... existing navbar code ... -->
+<div class="d-flex align-items-center ms-3">
+    <a href="tel:+919080700642" class="btn btn-danger btn-sm d-none d-lg-block">
+        <i class="fas fa-phone-alt me-1"></i> Emergency
+    </a>
+    <a href="tel:+919080700642" class="btn btn-danger btn-sm d-lg-none">
+        <i class="fas fa-phone-alt"></i>
+    </a>
+</div>
+<!-- ... rest of navbar code ... -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <style>
+        /* Navbar Emergency Button */
+.navbar .btn-danger.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+@media (max-width: 991.98px) {
+    .navbar .btn-danger.btn-sm {
+        padding: 0.5rem;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+        .network-error-alert {
+            position: fixed;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            width: 100%;
+            max-width: 600px;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { top: -50px; }
+            to { top: 60px; }
+        }
+        </style>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container h-100">
+            <div class="row align-items-center h-100">
+                <div class="col-lg-6 order-lg-2" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="hero-content-right">
+                        <div class="hero-image-stack">
+                            <img src="https://i.pinimg.com/736x/ac/9f/df/ac9fdf65a27b73c3da0a33a8c502de93.jpg" alt="Dental Clinic" class="main-image">
+                            <img src="https://i.pinimg.com/736x/77/12/ab/7712abb2891c85439f74b45a595d3018.jpg" alt="Dental Treatment" class="accent-image-1">
+                            <img src="https://i.pinimg.com/736x/f8/f3/ba/f8f3ba52ebfa67f6ed1115be9e65b878.jpg" alt="Dental Equipment" class="accent-image-2">
+                            <div class="image-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="hero-content-left">
+                        <span class="hero-subtitle">Welcome to Smile Bright Dental</span>
+                        <h1 class="hero-title">Creating Beautiful <span class="text-highlight">Smiles</span> Every Day</h1>
+                        <p class="hero-text">Experience exceptional dental care with our team of specialists using the latest technology in a comfortable environment.</p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary btn-lg" onclick="showAppointmentAlert()">Book Appointment</button>
+                            <a href="#services" class="btn btn-outline-primary btn-lg ms-3">Our Services</a>
+                        </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Our Services</h2>
+            <div class="row">
+                <div class=" col-6 col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card service-card">                      
+                        <div class="service-img-container">
+                            <img src="https://i.pinimg.com/736x/77/12/ab/7712abb2891c85439f74b45a595d3018.jpg" class="service-img" alt="General Dentistry">
+                        </div>
+                        <div class="card-body text-center">
+                            <i class="fas fa-tooth service-icon"></i>
+                            <h4 class="card-title">General Dentistry</h4>
+                            <p class="card-text">Comprehensive dental check-ups, cleanings, and preventive care for all ages.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-6 col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card service-card">
+                        <div class="service-img-container">
+                            <img src="https://i.pinimg.com/736x/f8/f3/ba/f8f3ba52ebfa67f6ed1115be9e65b878.jpg" class="service-img" alt="Cosmetic Dentistry">
+                        </div>
+                        <div class="card-body text-center">
+                            <i class="fas fa-smile service-icon"></i>
+                            <h4 class="card-title">Cosmetic Dentistry</h4>
+                            <p class="card-text">Teeth whitening, veneers, and other procedures to enhance your smile.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-6 col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card service-card">
+                        <div class="service-img-container">
+                            <img src="https://i.pinimg.com/736x/d2/10/e6/d210e6d0cc27fca87fe4245aea34e071.jpg" class="service-img" alt="Orthodontics">
+                        </div>
+                        <div class="card-body text-center">
+                            <i class="fas fa-teeth service-icon"></i>
+                            <h4 class="card-title">Orthodontics</h4>
+                            <p class="card-text">Braces, aligners, and other treatments to straighten teeth and correct bite issues.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- New Services -->
+                <div class=" col-6 col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="card service-card">
+                        <div class="service-img-container">
+                            <img src="https://i.pinimg.com/736x/e8/f4/52/e8f45276bb39783cd23f52e76ec86dda.jpg" class="service-img" alt="Dental Implants">
+                        </div>
+                        <div class="card-body text-center">
+                            <i class="fas fa-procedures service-icon"></i>
+                            <h4 class="card-title">Dental Implants</h4>
+                            <p class="card-text">Permanent tooth replacement solutions that look, feel, and function like natural teeth.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-6 col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="card service-card">
+                        <div class="service-img-container">
+                            <img src="https://i.pinimg.com/736x/0c/d3/41/0cd341ededbf2cf06b52a3f1f627a066.jpg" class="service-img" alt="Root Canal">
+                        </div>
+                        <div class="card-body text-center">
+                            <i class="fas fa-teeth-open service-icon"></i>
+                            <h4 class="card-title">Root Canal</h4>
+                            <p class="card-text">Pain-free treatment to save infected teeth and prevent extraction with modern techniques.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="card service-card">
+                        <div class="service-img-container">
+                            <img src="https://i.pinimg.com/736x/fb/ad/c1/fbadc1cde7a7d0c8b22bf11b7b22e890.jpg" class="service-img" alt="Emergency Care">
+                        </div>
+                        <div class="card-body text-center">
+                            <i class="fas fa-first-aid service-icon"></i>
+                            <h4 class="card-title">Emergency Care</h4>
+                            <p class="card-text">Immediate dental care for toothaches, broken teeth, and other urgent dental problems.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="position-absolute top-0 end-0 m-2">
+                    <span class="badge bg-success">Most Popular</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section id="doctors" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Our Doctors</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="100">
+                    <div class="card doctor-card">
+                        <img src="https://i.pinimg.com/736x/0e/5e/89/0e5e89db47dda1eefc38c98878291ec3.jpg" class="card-img-top" alt="Dr. John Smith">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Dr. John Smith</h4>
+                            <p class="card-text">General Dentist</p>
+                            <p>15+ years of experience in general and cosmetic dentistry.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="200">
+                    <div class="card doctor-card">
+                        <img src="https://i.pinimg.com/736x/f6/8b/03/f68b0329c42b013fddbdad13582823ba.jpg" class="card-img-top" alt="Dr. Sarah Johnson">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Dr. Sarah Johnson</h4>
+                            <p class="card-text">Orthodontist</p>
+                            <p>Specialist in braces and Invisalign treatments for all ages.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="300">
+                    <div class="card doctor-card">
+                        <img src="https://i.pinimg.com/736x/a1/07/90/a10790513f8f4b95c716e4fa1a926675.jpg" class="card-img-top" alt="Dr. Michael Lee">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Dr. Michael Lee</h4>
+                            <p class="card-text">Oral Surgeon</p>
+                            <p>Expert in dental implants and complex oral surgeries.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add in doctor cards -->
+<div class="availability-badge">
+    <span class="badge bg-success">Available Today</span>
+    <!-- OR -->
+    <span class="badge bg-secondary">Booked Today</span>
+</div>
+            </div>
+        </div>
+    </section>
+        
+        <!-- Dental Technology Section -->
+        <section id="technology" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5" data-aos="fade-up">Advanced Dental Technology</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="tech-card">
+                            <div class="tech-icon">
+                                <i class="fas fa-x-ray"></i>
+                            </div>
+                            <h3>Digital X-rays</h3>
+                            <p>90% less radiation with instant digital imaging for accurate diagnosis</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="tech-card">
+                            <div class="tech-icon">
+                                <i class="fas fa-laser"></i>
+                            </div>
+                            <h3>Laser Dentistry</h3>
+                            <p>Pain-free treatments with advanced dental lasers for precise procedures</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="tech-card">
+                            <div class="tech-icon">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                            <h3>3D Imaging</h3>
+                            <p>CBCT scans for complete oral structure visualization and implant planning</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6 mb-4" data-aos="fade-right">
+                        <div class="tech-feature">
+                            <h4><i class="fas fa-microscope me-2"></i> High-Powered Microscopes</h4>
+                            <p>Enhanced precision for root canal treatments and microscopic dentistry</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4" data-aos="fade-left">
+                        <div class="tech-feature">
+                            <h4><i class="fas fa-robot me-2"></i> CAD/CAM Technology</h4>
+                            <p>Same-day crowns and restorations with computer-aided design/manufacturing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Add before Statistics Section -->
+        <!-- Statistics Section -->
+        <section id="statistics" class="statistics-section py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 col-md-3 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <h2 class="stat-counter" data-count="15">0</h2>
+                            <p class="stat-title">Expert Dentists</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-smile"></i>
+                            </div>
+                            <h2 class="stat-counter" data-count="1000">0</h2>
+                            <p class="stat-title">Happy Patients</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h2 class="stat-counter" data-count="25">0</h2>
+                            <p class="stat-title">Years Experience</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 mb-4" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-tooth"></i>
+                            </div>
+                            <h2 class="stat-counter" data-count="500">0</h2>
+                            <p class="stat-title">Dental Procedures</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+       
+
+    <!-- Patient Gallery Section -->
+    <section id="patients" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Patient Gallery</h2>
+            <div class="row">
+                <div class="col-sm-6 col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card patient-card">
+                        <div class="patient-img-container">
+                            <img src="https://i.pinimg.com/736x/fa/24/23/fa242333cbee94120fb35b1da61e0eb8.jpg" class="patient-img" alt="Before and After">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Teeth Whitening</h5>
+                            <p class="card-text">Patient achieved 8 shades whiter teeth in just one session.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card patient-card">
+                        <div class="patient-img-container">
+                            <img src="https://i.pinimg.com/736x/48/71/5e/48715e06109fb4ef8f4ac34a76bfd851.jpg" class="patient-img" alt="Before and After">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Dental Implants</h5>
+                            <p class="card-text">Full mouth restoration with dental implants completed in 3 months.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-4 mx-auto" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card patient-card">
+                        <div class="patient-img-container">
+                            <img src="https://i.pinimg.com/736x/82/90/6b/82906ba5a531af91859c5f314c036d96.jpg" class="patient-img" alt="Before and After">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Invisalign Treatment</h5>
+                            <p class="card-text">Perfect smile achieved after 18 months of Invisalign treatment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">What Our Patients Say</h2>
+            
+            <div class="testimonials-container" id="testimonialsContainer" data-aos="fade-up">
+                <div class="testimonials-wrapper">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"Dr. Smith completely transformed my smile with veneers. The process was painless and the results are amazing. I can't stop smiling now!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://i.pinimg.com/736x/0e/bd/b9/0ebdb9f8cb628dc5224bd2f84a2ff9e2.jpg" alt="Patient" class="testimonial-author-img">
+                            <div class="testimonial-author-info">
+                                <h5>Jennifer Adams</h5>
+                                <p>Cosmetic Dentistry Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"I was terrified of dental implants, but Dr. Lee made the whole experience comfortable. His expertise is unmatched and the results are life-changing."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://i.pinimg.com/736x/7d/1a/3f/7d1a3f77eee9f34782c6f88e97a6c888.jpg" alt="Patient" class="testimonial-author-img">
+                            <div class="testimonial-author-info">
+                                <h5>Robert Johnson</h5>
+                                <p>Dental Implant Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p>"Dr. Johnson's orthodontic treatment for my teenager was excellent. She was patient, explained everything clearly, and the results exceeded our expectations."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg" alt="Patient" class="testimonial-author-img">
+                            <div class="testimonial-author-info">
+                                <h5>Michelle Thompson</h5>
+                                <p>Parent of Orthodontic Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"The entire staff is friendly and professional. My dental anxiety is completely gone thanks to their caring approach and gentle techniques."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://i.pinimg.com/736x/ce/76/b2/ce76b20f89a9a46e372cb6d6b612eb90.jpg" alt="Patient" class="testimonial-author-img">
+                            <div class="testimonial-author-info">
+                                <h5>David Wilson</h5>
+                                <p>Regular Check-up Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-controls">
+                <button class="testimonial-control-btn prev-btn" id="prevTestimonial">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="testimonial-control-btn next-btn" id="nextTestimonial">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="testimonial-indicators" id="testimonialIndicators">
+                <span class="testimonial-indicator active"></span>
+                <span class="testimonial-indicator"></span>
+                <span class="testimonial-indicator"></span>
+                <span class="testimonial-indicator"></span>
+            </div>
+        </div>
+    </section>
+   <section id="dental-tips" class="dental-tips-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Dental Tips & Education</h2>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tips-video-container">
+                        <img src="https://i.pinimg.com/736x/71/70/06/717006a2e63c89d5c8f027bdcbe43274.jpg" alt="Dental Care Tips" class="img-fluid rounded">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tips-accordion" id="tipsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <i class="fas fa-toothbrush me-2"></i> Proper Brushing Technique
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#tipsAccordion">
+                                <div class="accordion-body">
+                                    <p>Brush your teeth for two minutes, twice a day using fluoride toothpaste. Hold your brush at a 45-degree angle to your gums and use short, gentle strokes. Don't forget to brush your tongue to remove bacteria and freshen breath.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <i class="fas fa-teeth-open me-2"></i> Flossing Importance
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#tipsAccordion">
+                                <div class="accordion-body">
+                                    <p>Flossing once a day removes plaque and food particles from between teeth where your toothbrush can't reach. Gently curve the floss around each tooth and move it up and down against the tooth surface and under the gumline.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <i class="fas fa-apple-alt me-2"></i> Diet and Dental Health
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#tipsAccordion">
+                                <div class="accordion-body">
+                                    <p>Limit sugary foods and drinks as they contribute to tooth decay. Choose tooth-friendly foods like fruits, vegetables, cheese, and nuts. Drink plenty of water, especially after meals, to help wash away food particles and bacteria.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    <i class="fas fa-calendar-check me-2"></i> Regular Dental Check-ups
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#tipsAccordion">
+                                <div class="accordion-body">
+                                    <p>Visit your dentist every six months for professional cleaning and check-up. Regular dental visits help detect problems early when they're easier and less expensive to treat. Don't wait until you have pain to see a dentist.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <a href="#contact" class="btn btn-primary">Schedule a Consultation</a>
+                        <button class="btn btn-outline-primary ms-2" onclick="showAppointmentAlert()">Book Appointment</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Preventive Care</h4>
+                        <p>Regular check-ups and cleanings help prevent dental problems before they start.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h4>Children's Dental Health</h4>
+                        <p>Start dental visits by age 1 and establish good oral hygiene habits early.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h4>Oral Health & Overall Health</h4>
+                        <p>Good oral health contributes to better overall health and well-being.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<style>/* Dental Tips Section */
+    .dental-tips-section {
+        background-color: #ffffff;
+        position: relative;
+    }
+    
+    .tips-video-container {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .tips-video-container:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .tips-video-container img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+    }
+    
+    .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70px;
+        height: 70px;
+        background-color: rgba(13, 110, 253, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        transition: all 0.3s ease;
+    }
+    
+    .tips-video-container:hover .play-button {
+        background-color: #0d6efd;
+        width: 80px;
+        height: 80px;
+    }
+    
+    .tips-accordion .accordion-item {
+        border: none;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .tips-accordion .accordion-button {
+        font-weight: 600;
+        padding: 15px 20px;
+        background-color: white;
+        color: #343a40;
+    }
+    
+    .tips-accordion .accordion-button:not(.collapsed) {
+        color: #0d6efd;
+        background-color: rgba(13, 110, 253, 0.05);
+        box-shadow: none;
+    }
+    
+    .tips-accordion .accordion-button:focus {
+        box-shadow: none;
+        border-color: rgba(13, 110, 253, 0.25);
+    }
+    
+    .tips-accordion .accordion-body {
+        padding: 15px 20px;
+        background-color: white;
+    }
+    
+    .tip-card {
+        background-color: white;
+        border-radius: 10px;
+        padding: 30px 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        height: 100%;
+        transition: all 0.3s ease;
+    }
+    
+    .tip-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    .tip-icon {
+        width: 70px;
+        height: 70px;
+        background-color: rgba(13, 110, 253, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        color: #0d6efd;
+        font-size: 28px;
+        transition: all 0.3s ease;
+    }
+    
+    .tip-card:hover .tip-icon {
+        background-color: #0d6efd;
+        color: white;
+    }
+    
+    .tip-card h4 {
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+    
+    /* Mobile adjustments for Dental Tips */
+    @media (max-width: 991px) {
+        .tips-video-container {
+            margin-bottom: 30px;
+        }
+        
+        .tips-video-container img {
+            height: 300px;
+        }
+    }
+    
+    @media (max-width: 767px) {
+        .tips-video-container img {
+            height: 250px;
+        }
+        
+        .play-button {
+            width: 60px;
+            height: 60px;
+            font-size: 20px;
+        }
+        
+        .tip-card {
+            padding: 20px 15px;
+            margin-bottom: 20px;
+        }
+        
+        .tip-icon {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+    }</style>
+      <script></script> 
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Contact Us</h2>
+            <div class="row">
+                <div class="col-md-6" data-aos="fade-right">
+                    <form id="contactForm" action="https://formspree.io/f/mrbqpnaq" method="POST">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Your Phone">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" id="message" rows="5" name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <div id="formStatus" class="mt-3"></div>
+                    </form>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="contact-info">
+                        <h4>Clinic Information</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Dental Street, City, State 12345</p>
+                        <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                        <p><i class="fas fa-envelope"></i> info@smilebrightdental.com</p>
+                        <h5 class="mt-4">Working Hours</h5>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                        <p>Saturday: 9:00 AM - 2:00 PM</p>
+                        <p>Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Add before footer -->
+ <!-- Footer -->
+    <footer class="footer-section">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                        <div class="footer-info">
+                            <h3 class="footer-logo">Smile <span>Bright</span> Dental</h3>
+                            <p class="footer-desc">Providing exceptional dental care with a gentle touch for over 25 years. Your smile is our priority.</p>
+                            <div class="footer-contact">
+                                <p><i class="fas fa-map-marker-alt"></i> 123 Dental Street, City, State 12345</p>
+                                <p><i class="fas fa-phone-alt"></i> (123) 456-7890</p>
+                                <p><i class="fas fa-envelope"></i> info@smilebrightdental.com</p>
+                            </div>
+                            <div class="footer-social">
+                                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                        <div class="footer-links">
+                            <h4>Quick Links</h4>
+                            <ul>
+                                <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                                <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                                <li><a href="#doctors"><i class="fas fa-chevron-right"></i> Our Doctors</a></li>
+                                <li><a href="#patients"><i class="fas fa-chevron-right"></i> Patient Gallery</a></li>
+                                <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Testimonials</a></li>
+                                <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                        <div class="footer-links">
+                            <h4>Our Services</h4>
+                            <ul>
+                                <li><a href="#services"><i class="fas fa-tooth"></i> General Dentistry</a></li>
+                                <li><a href="#services"><i class="fas fa-smile"></i> Cosmetic Dentistry</a></li>
+                                <li><a href="#services"><i class="fas fa-teeth"></i> Orthodontics</a></li>
+                                <li><a href="#services"><i class="fas fa-procedures"></i> Dental Implants</a></li>
+                                <li><a href="#services"><i class="fas fa-teeth-open"></i> Root Canal</a></li>
+                                <li><a href="#services"><i class="fas fa-first-aid"></i> Emergency Care</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                        <div class="footer-newsletter">
+                            
+                            <h4>Newsletter</h4>
+                            <p>Subscribe to receive dental tips, special offers, and clinic updates.</p>
+                            <form class="newsletter-form" id="newsletterForm">
+                                <div class="input-group">
+                                    <input type="email" class="form-control" placeholder="Your Email" aria-label="Your Email" required>
+                                    <button class="btn btn-primary gg" type="submit" onclick="handleSubscribe()">
+                                        <span>Subscribe</span>
+                                        <i class="fas fa-paper-plane ms-2"></i>
+                                    </button>
+                                </div>
+                            </form>
+                            <div class="footer-hours mt-4">
+                                <h4>Working Hours</h4>
+                                <div class="hours-item">
+                                    <span class="day">Monday - Friday:</span>
+                                    <span class="hours">9:00 AM - 6:00 PM</span>
+                                </div>
+                                <div class="hours-item">
+                                    <span class="day">Saturday:</span>
+                                    <span class="hours">9:00 AM - 2:00 PM</span>
+                                </div>
+                                <div class="hours-item">
+                                    <span class="day">Sunday:</span>
+                                    <span class="hours">Closed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="copyright">&copy; 2025 Smile Bright Dental Clinic. All Rights Reserved. Developed by Vignesh</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-bottom-links">
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Terms of Service</a>
+                            <a href="#">Sitemap</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+<style>/* Footer Styles */
+.gg{
+    height: 50px;
+}
+    .footer-section {
+        background-color: #212529;
+        color: #fff;
+        position: relative;
+    }
+    
+    .footer-top {
+        padding: 70px 0 40px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .footer-logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+    
+    .footer-logo span {
+        color: #0d6efd;
+    }
+    
+    .footer-desc {
+        color: #adb5bd;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+    
+    .footer-contact p {
+        margin-bottom: 10px;
+        color: #adb5bd;
+        display: flex;
+        align-items: center;
+    }
+    
+    .footer-contact i {
+        color: #0d6efd;
+        margin-right: 10px;
+        width: 20px;
+        text-align: center;
+    }
+    
+    .footer-social {
+        margin-top: 25px;
+    }
+    
+    .footer-social a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: #fff;
+        margin-right: 10px;
+        transition: all 0.3s ease;
+    }
+    
+    .footer-social a:hover {
+        background-color: #0d6efd;
+        transform: translateY(-5px);
+    }
+    
+    .footer-links h4, .footer-newsletter h4 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 25px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+    
+    .footer-links h4::after, .footer-newsletter h4::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background-color: #0d6efd;
+    }
+    
+    .footer-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .footer-links ul li {
+        margin-bottom: 12px;
+    }
+    
+    .footer-links ul li a {
+        color: #adb5bd;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+    }
+    
+    .footer-links ul li a i {
+        margin-right: 8px;
+        font-size: 0.8rem;
+        color: #0d6efd;
+    }
+    
+    .footer-links ul li a:hover {
+        color: #fff;
+        padding-left: 5px;
+    }
+    
+    .newsletter-form .input-group {
+        margin-top: 15px;
+    }
+    
+    .newsletter-form .form-control {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: #fff;
+        padding: 12px 15px;
+        border-radius: 5px 0 0 5px;
+    }
+    
+    .newsletter-form .form-control::placeholder {
+        color: #adb5bd;
+    }
+    
+    .newsletter-form .btn {
+        border-radius: 0 5px 5px 0;
+        padding: 12px 20px;
+    }
+    
+    .footer-hours {
+        color: #adb5bd;
+    }
+    
+    .footer-hours h4 {
+        margin-bottom: 15px;
+    }
+    
+    .hours-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    }
+    
+    .hours-item:last-child {
+        border-bottom: none;
+    }
+    
+    .day {
+        font-weight: 600;
+    }
+    
+    .hours {
+        color: #fff;
+    }
+    
+    .footer-bottom {
+        padding: 20px 0;
+        background-color: #1a1e21;
+    }
+    
+    .copyright {
+        margin: 0;
+        color: #adb5bd;
+    }
+    
+    .footer-bottom-links {
+        text-align: right;
+    }
+    
+    .footer-bottom-links a {
+        color: #adb5bd;
+        margin-left: 20px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+    }
+    
+    .footer-bottom-links a:hover {
+        color: #0d6efd;
+    }
+    
+    @media (max-width: 991px) {
+        .footer-top {
+            padding: 50px 0 30px;
+        }
+    }
+    
+    @media (max-width: 767px) {
+        .footer-bottom-links {
+            text-align: left;
+            margin-top: 15px;
+        }
+        
+        .footer-bottom-links a {
+            margin-left: 0;
+            margin-right: 20px;
+        }
+    }</style>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <!-- Add before closing body tag -->
+<div class="whatsapp-chat">
+    <a href="https://wa.me/919080700642" target="_blank" class="btn btn-success rounded-circle">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</div>
+
+<style>
+.whatsapp-chat {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+}
+.whatsapp-chat a {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+</style>
+</body>
+</html>
