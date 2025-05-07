@@ -17,11 +17,69 @@
     <!-- Replace this line: -->
     <script src="https://sdk.twilio.com/js/client/latest/twilio.min.js"></script>
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
 <!-- With this updated CDN link: -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
+
+<script>
+    function showAppointmentAlert() {
+        Swal.fire({
+            title: 'Book Appointment',
+            html: `
+                <form id="appointmentForm">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="tel" class="form-control" placeholder="Phone Number" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Email Address">
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select" required>
+                            <option value="" disabled selected>Select Service</option>
+                            <option>General Dentistry</option>
+                            <option>Cosmetic Dentistry</option>
+                            <option>Orthodontics</option>
+                            <option>Dental Implants</option>
+                            <option>Root Canal</option>
+                            <option>Emergency Care</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <input type="date" class="form-control" required>
+                    </div>
+                </form>
+            `,
+            showCancelButton: true,
+            confirmButtonText: 'Submit',
+            cancelButtonText: 'Cancel',
+            focusConfirm: false,
+            preConfirm: () => {
+                const form = document.getElementById('appointmentForm');
+                if (form.checkValidity()) {
+                    return true;
+                } else {
+                    Swal.showValidationMessage('Please fill all required fields');
+                    return false;
+                }
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Success!',
+                    'Your appointment request has been submitted. We will contact you shortly.',
+                    'success'
+                );
+            }
+        });
+    }
+</script>
+
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
