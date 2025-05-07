@@ -529,14 +529,14 @@ function showAppointmentAlert() {
     Swal.fire({
         title: 'Book an Appointment',
         html: `
-            <form id="appointmentForm" action="https://formspree.io/f/mrbqpnaq" method="POST" class="text-left">
+            <form id="appointmentForm" class="text-left">
                 <div class="mb-3">
                     <label for="apptName" class="form-label">Your Name</label>
                     <input type="text" class="form-control" id="apptName" name="name" required>
                 </div>
                 <div class="mb-3">
                     <label for="apptEmail" class="form-label">Email Address</label>
-                    <input type="email" class="form-control" id="apptEmail" name="email" required>
+                    <input type="email" class="form-control" id="apptEmail" name="email">
                 </div>
                 <div class="mb-3">
                     <label for="apptPhone" class="form-label">Phone Number</label>
@@ -578,7 +578,12 @@ function showAppointmentAlert() {
         confirmButtonText: 'Book Now',
         cancelButtonText: 'Cancel',
         preConfirm: () => {
-            const apptForm = document.getElementById('appointmentForm');
+            const form = document.getElementById('appointmentForm');
+            if (!form.checkValidity()) {
+                Swal.showValidationMessage('Please fill all required fields');
+                return false;
+            }
+
             const formData = {
                 name: document.getElementById('apptName').value,
                 email: document.getElementById('apptEmail').value,
@@ -588,19 +593,19 @@ function showAppointmentAlert() {
                 service: document.getElementById('apptService').value
             };
 
-            // Twilio WhatsApp API details
+            // Twilio WhatsApp API integration
             const twilioData = {
-                accountSid: process.env.TWILIO_ACCOUNT_SID, // Use environment variable
-                authToken: process.env.TWILIO_AUTH_TOKEN,   // Use environment variable
-                from: 'whatsapp:+14155238886',
-                to: 'whatsapp:+919080700642',
-                body: `New Appointment Request:
-                    Name: ${formData.name}
-                    Email: ${formData.email}
-                    Phone: ${formData.phone}
-                    Date: ${formData.date}
-                    Time: ${formData.time}
-                    Service: ${formData.service}`
+                accountSid: 'AC905534ff99d346039e209ba729728a1a', // Your Twilio Account SID
+                authToken: 'ef5bfb62c569246fae50d85bf907ca35',    // Your Twilio Auth Token
+                from: 'whatsapp:+14155238886', // Twilio sandbox number
+                to: 'whatsapp:+919080700642',  // Your WhatsApp number
+                body: `New Appointment Booking:
+Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Date: ${formData.date}
+Time: ${formData.time}
+Service: ${formData.service}`
             };
 
             return fetch('https://api.twilio.com/2010-04-01/Accounts/' + twilioData.accountSid + '/Messages.json', {
@@ -624,13 +629,14 @@ function showAppointmentAlert() {
             })
             .catch(error => {
                 Swal.showValidationMessage(`Booking failed: ${error}`);
+                return false;
             });
         }
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
                 title: 'Appointment Request Sent!',
-                text: 'We\'ll confirm your appointment via WhatsApp shortly',
+                text: 'We will confirm your appointment via WhatsApp shortly',
                 icon: 'success'
             });
         }
