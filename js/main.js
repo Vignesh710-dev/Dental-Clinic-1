@@ -216,7 +216,7 @@ function showAppointmentAlert() {
                 </div>
                 <div class="mb-3">
                     <label for="apptEmail" class="form-label">Email Address</label>
-                    <input type="email" class="form-control" id="apptEmail" name="email" required>
+                    <input type="email" class="form-control" id="apptEmail" name="email">
                 </div>
                 <div class="mb-3">
                     <label for="apptPhone" class="form-label">Phone Number</label>
@@ -258,38 +258,46 @@ function showAppointmentAlert() {
         confirmButtonText: 'Book Now',
         cancelButtonText: 'Cancel',
         preConfirm: () => {
-            const apptForm = document.getElementById('appointmentForm');
-            const formData = new FormData(apptForm);
+            const form = document.getElementById('appointmentForm');
+            if (!form.checkValidity()) {
+                Swal.showValidationMessage('Please fill all required fields');
+                return false;
+            }
+
+            // Show loading state
+            Swal.showLoading();
             
-            return fetch(apptForm.action, {
+            return fetch(form.action, {
                 method: 'POST',
-                body: formData,
+                body: new FormData(form),
                 headers: {
                     'Accept': 'application/json'
                 }
             })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 return response.json();
             })
             .then(data => {
-                if (data.ok) {
-                    return true;
-                } else {
-                    throw new Error('Form submission failed');
+                if (data.error) {
+                    throw new Error(data.error);
                 }
+                return true;
             })
             .catch(error => {
-                Swal.showValidationMessage(`Request failed: ${error}`);
+                Swal.showValidationMessage(
+                    `Booking failed: ${error.message}. Please try again or contact us directly.`
+                );
+                return false;
             });
         }
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
-                title: 'Appointment Booked!',
-                text: 'We\'ll confirm your appointment shortly.',
+                title: 'Appointment Request Sent!',
+                text: 'We will contact you shortly to confirm your appointment',
                 icon: 'success'
             });
         }
@@ -586,57 +594,36 @@ function showAppointmentAlert() {
 
             const formData = {
                 name: document.getElementById('apptName').value,
-                email: document.getElementById('apptEmail').value,
                 phone: document.getElementById('apptPhone').value,
                 date: document.getElementById('apptDate').value,
                 time: document.getElementById('apptTime').value,
                 service: document.getElementById('apptService').value
             };
 
-            // Twilio WhatsApp API integration
-            const twilioData = {
-                accountSid: 'AC905534ff99d346039e209ba729728a1a', // Your Twilio Account SID
-                authToken: 'ef5bfb62c569246fae50d85bf907ca35',    // Your Twilio Auth Token
-                from: 'whatsapp:+14155238886', // Twilio sandbox number
-                to: 'whatsapp:+919080700642',  // Your WhatsApp number
-                body: `New Appointment Booking:
-Name: ${formData.name}
-Phone: ${formData.phone}
-Email: ${formData.email}
-Date: ${formData.date}
-Time: ${formData.time}
-Service: ${formData.service}`
-            };
-
-            return fetch('https://api.twilio.com/2010-04-01/Accounts/' + twilioData.accountSid + '/Messages.json', {
+            // Send data to your backend instead of directly to Twilio
+            return fetch('https://your-backend-api.com/appointments', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': 'Basic ' + btoa(twilioData.accountSid + ":" + twilioData.authToken)
+                    'Content-Type': 'application/json',
                 },
-                body: new URLSearchParams({
-                    From: twilioData.from,
-                    To: twilioData.to,
-                    Body: twilioData.body
-                })
+                body: JSON.stringify(formData)
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error_code) {
-                    throw new Error(data.message);
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to book appointment');
                 }
-                return true;
+                return response.json();
             })
             .catch(error => {
-                Swal.showValidationMessage(`Booking failed: ${error}`);
+                Swal.showValidationMessage(`Booking failed: ${error.message}`);
                 return false;
             });
         }
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
-                title: 'Appointment Request Sent!',
-                text: 'We will confirm your appointment via WhatsApp shortly',
+                title: 'Appointment Request Received!',
+                text: 'We will contact you shortly to confirm your appointment',
                 icon: 'success'
             });
         }
